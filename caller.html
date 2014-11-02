@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Widget Samples</title>
+    <link rel="stylesheet" type="text/css" href="css/widget.css" />
+    <script type="text/javascript" src="js/RecommendWidget.js?v=1"></script>
+</head>
+<body>
+Sample1:
+<div>
+    <div id="widget-area">
+    </div>
+</div>
+<br/>
+Sample2:
+<div>
+    <div id="widget-area1">
+    </div>
+</div>
+<br/>
+Sample3:
+<div>
+    <div id="widget-area2">
+    </div>
+</div>
+<script>
+    new RecommendWidget({
+        widget_width: '450',
+        text_align: 'left',
+        widget_border_color: 'red',
+        title_text_color: 'green',
+        snippet_text_color: '#555',
+        title_text_size: '14',
+        snippet_text_size: '12',
+        item_space: '15',
+        keyword: 'android',
+        result_size: '3'
+    }).populate('widget-area');
+
+    new RecommendWidget({
+        widget_width: '400',
+        text_align: 'left',
+        widget_border_color: 'gray',
+        title_text_color: 'green',
+        snippet_text_color: '#555',
+        title_text_size: '14',
+        snippet_text_size: '12',
+        item_space: '15',
+        keyword: 'lady gaga',
+        result_size: '3'
+    }).populate('widget-area1');
+
+    new RecommendWidget({
+        keyword: 'http://dealbook.nytimes.com/',
+        outer_style: true
+    }).populate('widget-area2');
+</script>
+</body>
+</html>
