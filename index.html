@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Search Widget Samples</title>
+    <!-- It's only necessary to import widget-customize.css when you need to
+    completely customize the widget style by yourself -->
+    <link rel="stylesheet" type="text/css" href="css/widget-customize.css"/>
+    <style>
+        html,body{
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<h3>
+    It's a simple and easy-to-use Widget component which will search keyword by google search engine.
+</h3>
+<ul style="padding: 0;margin-left: 0;">
+    <li>1.It's simple.Just need to import only one js file which wrote by plain javascript</li>
+    <li>2.It's customizable.You can simply define some style when calling component or <br>
+        completely customize it by yourself via individual CSS file
+    </li>
+    <li>
+        3.It's asynchronous and won't effect the page performance.
+    </li>
+    <li>
+        4.It's easy-to-use.You can call it via below way and put the widget into anywhere of page
+        <pre>
+            new RecommendWidget({
+                keyword: 'android',
+                result_size: '3'
+            }).populate('widget-area')
+        </pre>
+    </li>
+</ul>
+<p>
+    Please see following different cases.
+</p>
+Sample1:
+<div>
+    <div id="widget-area">
+    </div>
+</div>
+<br/>
+Sample2:
+<div>
+    <div id="widget-area1">
+    </div>
+</div>
+<br/>
+Sample3:
+<div>
+    <div id="widget-area2">
+    </div>
+</div>
+
+<!--
+    It's very easy to use RecommendWidget component.Just import RecommendWidget.js file.Then create RecommendWidget
+    object anywhere you want.Please see below code:
+-->
+<script type="text/javascript" src="js/RecommendWidget.js?v=1"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new RecommendWidget({
+            widget_width: '400',
+            text_align: 'left',
+            widget_border_color: 'red',
+            title_text_color: 'green',
+            snippet_text_color: '#555',
+            title_text_size: '14',
+            snippet_text_size: '12',
+            item_space: '15',
+            keyword: 'android',
+            result_size: '3'
+        }).populate('widget-area');
+
+        new RecommendWidget({
+            widget_width: '400',
+            text_align: 'right',
+            widget_border_color: 'gray',
+            title_text_color: 'green',
+            snippet_text_color: '#555',
+            title_text_size: '14',
+            snippet_text_size: '12',
+            item_space: '15',
+            keyword: 'jQuery',
+            result_size: '3'
+        }).populate('widget-area1');
+
+        /**
+         * A sample which style is completely customized by end user.
+         */
+        new RecommendWidget({
+            keyword: 'http://dealbook.nytimes.com/',
+            outer_style: true
+        }).populate('widget-area2');
+    }, false);
+</script>
+</body>
+</html>

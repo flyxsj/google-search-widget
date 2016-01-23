@@ -1,16 +1,14 @@
 /**
  * User: steven
  * Email:21xsj@163.com
- * Date: 14-2-12
- * Time: 11:08AM
  * Description:
  */
-(function () {
+;(function (window, document, undefined) {
     var isGoogleLoaded = false;
-    loadJs('http://www.google.com/jsapi?callback=RecommendWidgetUtil.googleLoad');
+    loadJs('http://www.google.com/jsapi?callback=RecommendWidgetUtil.googleLoaded');
 
     window.RecommendWidgetUtil = {
-        googleLoad: function () {
+        googleLoaded: function () {
             google.load('search', '1', {
                 'nocss': true,
                 'callback': function () {
@@ -58,11 +56,9 @@
             if (isGoogleLoaded) {
                 clearInterval(check_interval);
                 that.webSearch();
-            } else {
-                console.log('waiting google search api loading...');
             }
         }, 50);
-    }
+    };
 
     /**
      * search with google web search API
@@ -95,10 +91,9 @@
                 '</div>'
             ];
             var html = array.join('');
-            var list = dataList;
             var rows = '';
-            if (list && list.constructor == Array) {
-                list.forEach(function (value, index) {
+            if (dataList && dataList.constructor == Array) {
+                dataList.forEach(function (value, index) {
                     var item = '<li><a href="{href}" target="_blank" title="{title}">{title}</a><p>{snippet}</p></li>';
                     item = item.replace(new RegExp('\{href\}', "gm"), value['url']);
                     item = item.replace(new RegExp('\{title\}', "gm"), value['title']);
@@ -142,7 +137,7 @@
         }
         html += tpl;
         document.querySelector('#' + this.widget_area_id).innerHTML = html;
-    }
+    };
 
     /**
      * get style tag for widget
@@ -208,13 +203,13 @@
         return style;
     };
 
-    function loadJs(url, readyCallback) {
+    function loadJs(url) {
         var oHead = document.getElementsByTagName('HEAD').item(0);
         var oScript = document.createElement("script");
         oScript.setAttribute('type', "text/javascript");
         oScript.setAttribute('src', url);
         oHead.appendChild(oScript);
-    };
+    }
 
     function extend(target, source) {
         if (!target) {
@@ -227,15 +222,4 @@
             }
         }
     }
-
-    function getDummyDataList() {
-        return [
-            {title: 'Download jQuery | jQuery', snippet: 'jQuery snippet1', url: 'http://jquery.com/download/'},
-            {title: 'jQuery Foundation', snippet: 'jQuery snippet2', url: 'https://jquery.org/'},
-            {title: 'jQuery Tutorial - W3Schools', snippet: 'jQuery snippet3', url: 'http://www.w3schools.com/Jquery/default.asp'},
-            {title: 'jQuery TOOLS - The missing UI library for the Web', snippet: 'jQuery snippet3', url: 'http://jquerytools.org/'},
-            {title: 'jQuery Mobile', snippet: 'jQuery snippet3', url: 'http://jquerymobile.com/'},
-            {title: 'jQuery Cheatsheet - Oscar Otero', snippet: 'jQuery snippet4', url: 'http://oscarotero.com/jquery/'}
-        ];
-    };
-})();
+})(window, document);
